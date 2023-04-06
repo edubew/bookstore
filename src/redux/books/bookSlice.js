@@ -10,8 +10,8 @@ export default function booksReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_BOOK:
       return {
-        ...state.books,
-        books: action.payload,
+        ...state,
+        books: [...state.books, action.payload],
       };
     case REMOVE_BOOK:
       return {
