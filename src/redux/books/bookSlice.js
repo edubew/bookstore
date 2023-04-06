@@ -32,9 +32,9 @@ export default function booksReducer(state = initialState, action) {
     case ADD_BOOK: {
       const newBook = [...state.books, action.payload];
       return {
-        ...state.books, 
-        books: newBook
-      }
+        ...state.books,
+        books: newBook,
+      };
     }
     case REMOVE_BOOK:
       return {

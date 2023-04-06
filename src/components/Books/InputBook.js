@@ -19,7 +19,7 @@ const InputBook = () => {
   };
 
   const handleSubmit = () => {
-    dispatch(inputBook(state.title, state.author));
+    dispatch(addBook(state.title, state.author));
     state.title = '';
     state.author = '';
   };
