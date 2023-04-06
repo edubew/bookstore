@@ -15,7 +15,7 @@ const Book = ({ title, author, category, id }) => {
       <p>{author}</p>
       <div className="cta__container">
         <button type="submit">Comments</button>
-        <button type="submit">Remove</button>
+        <button type="submit" onClick={deleteBook}>Remove</button>
         <button type="submit">Edit</button>
       </div>
     </article>
@@ -27,11 +27,13 @@ export default Book;
 Book.defaultProps = {
   title: PropTypes.string,
   author: PropTypes.string,
+  category: PropTypes.string,
   id: PropTypes.string,
 };
 
 Book.propTypes = {
   title: PropTypes.string,
   author: PropTypes.string,
+  category: PropTypes.string,
   id: PropTypes.string,
 };
