@@ -9,7 +9,10 @@ const initialState = {
 export default function booksReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_BOOK:
-      return state.books = [...state.books, action.payload];
+      return {
+        ...state.books,
+        books: action.payload,
+      };
     case REMOVE_BOOK:
       return {
         ...state,
