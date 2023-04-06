@@ -29,27 +29,35 @@ const initialState = {
 // Add Reducers
 export default function booksReducer(state = initialState, action) {
   switch (action.type) {
-    case ADD_BOOK:
+    case ADD_BOOK: {
+      const newBook = [...state.books, action.payload];
       return {
-        ...state,
-        books: [...state.books, action.payload],
-      };
+        ...state.books, 
+        books: newBook
+      }
+    }
     case REMOVE_BOOK:
       return {
         ...state,
-        books: state.books.filter((book) => book.id !== action.id),
+        books: state.books.filter((book) => book.id !== action.payload.id),
       };
     default:
       return state;
   }
 }
 
-export const addBook = (book) => ({
+export const addBook = (title, author) => ({
   type: ADD_BOOK,
-  payload: book,
+  payload: {
+    title,
+    author,
+    id: uuidv4(),
+  },
 });
 
 export const removeBook = (id) => ({
   type: REMOVE_BOOK,
-  id,
+  payload: {
+    id,
+  },
 });
