@@ -9,21 +9,23 @@ const initialState = {
 export default function booksReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_BOOK:
-      return { ...state };
+      return state.books = [...state.books, action.payload];
     case REMOVE_BOOK:
       return {
         ...state,
-        items: state.items.filter((item) => item.id !== action.id),
+        books: state.books.filter((book) => book.id !== action.id),
       };
     default:
       return state;
   }
 }
 
-export const addBook = () => ({
+export const addBook = (book) => ({
   type: ADD_BOOK,
+  payload: book,
 });
 
-export const removeBook = () => ({
+export const removeBook = (id) => ({
   type: REMOVE_BOOK,
+  id,
 });
