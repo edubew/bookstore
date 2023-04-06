@@ -19,3 +19,11 @@ export default function booksReducer(state = initialState, action){
             return state;
     }
 }
+
+export const addBook = () => ({
+    type: ADD_BOOK,
+});
+
+export const removeBook = () => ({
+    type: REMOVE_BOOK,
+})
