@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { removeBook } from '../../redux/books/bookSlice';
 
 const Book = ({
-  title, author, category, id,
+  title, author, id,
 }) => {
   const dispatch = useDispatch();
 
@@ -12,7 +12,7 @@ const Book = ({
 
   return (
     <article className="book__container">
-      <small>{category}</small>
+      <small>Fictional</small>
       <h2>{title}</h2>
       <p>{author}</p>
       <div className="cta__container">
@@ -26,16 +26,8 @@ const Book = ({
 
 export default Book;
 
-Book.defaultProps = {
-  title: PropTypes.string,
-  author: PropTypes.string,
-  category: PropTypes.string,
-  id: PropTypes.string,
-};
-
 Book.propTypes = {
-  title: PropTypes.string,
-  author: PropTypes.string,
-  category: PropTypes.string,
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
 };
