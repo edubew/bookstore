@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background: #eeecec;
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -24,10 +25,6 @@ code {
     Consolas,
     'Courier New',
     monospace;
-}
-
-body {
-  background: #eeecec;
 }
 
 header {
