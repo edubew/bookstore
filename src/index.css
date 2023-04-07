@@ -1,12 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 body {
   margin: 0;
   background: #eeecec;
   font-family:
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
-    'Roboto',
-    'Oxygen',
+    'Roboto Slab',
+    'Montserrat',
     'Ubuntu',
     'Cantarell',
     'Fira Sans',
@@ -28,8 +29,10 @@ code {
 }
 
 header {
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 2.2rem;
   background: #fff;
   box-shadow: 1px 2px 2px rgb(218, 214, 214);
@@ -52,10 +55,10 @@ nav {
   text-decoration: none;
   font-size: 1.1rem;
   right: 50%;
-  color: #000;
+  color: #777;
 }
 
 .nav__item:hover,
 .nav__item:focus {
-  color: gray;
+  color: #999;
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+
 .booklist__container {
   margin-top: 3rem;
 }
@@ -11,31 +13,47 @@
   margin-left: 5%;
   margin-right: 5%;
   padding: 1rem;
+  border: 1px solid rgb(231, 227, 227);
+}
+
+.book__content {
+  font-family: 'Roboto Slab', sans-serif;
+  text-align: left;
 }
 
 .book__content > small {
   color: #999;
-  font-weight: 800;
+  font-weight: bolder;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .book__content > h2 {
   margin: 2px;
+  font-weight: bolder;
+  color: #444;
 }
 
 .book__content p {
   margin-top: 2px;
-  color: blue;
+  color: rgb(13, 161, 230);
+  font-weight: 100;
 }
 
 .cta__container {
   display: flex;
+  text-align: left;
   gap: 1rem;
+  margin-left: -0.5rem;
 }
 
 .cta__container > button {
   padding: 0.6rem;
+  font-family: 'Roboto Slab', sans-serif;
   border: none;
-  color: blue;
+  background: transparent;
+  color: rgb(13, 161, 230);
+  border-right: 1px solid rgb(170, 168, 168);
+  line-height: 1px;
 }
 
 .progress__container {
@@ -77,16 +95,19 @@
 .current__chapter {
   color: #999;
   margin-bottom: 0;
+  font-family: 'Roboto Slab', sans-serif;
 }
 
 .update__container p {
   margin-top: 2px;
   font-size: 1.1rem;
+  font-family: 'Roboto Slab', sans-serif;
 }
 
 .progress__btn {
   background-color: rgb(51, 182, 226);
   color: #fff;
+  font-family: 'Roboto Slab', sans-serif;
   font-weight: 600;
   border: none;
   padding: 0.8rem;
