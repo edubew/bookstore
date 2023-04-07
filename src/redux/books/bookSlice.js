@@ -1,4 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
+import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const BOOKS_URL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/fTVe6hSKCBLfTOyQqdDN/books';
 
@@ -32,18 +33,29 @@ export default function booksReducer(state = initialState, action) {
   }
 }
 
-export const addBook = (title, author) => ({
-  type: ADD_BOOK,
-  payload: {
-    title,
-    author,
-    id: uuidv4(),
-  },
+export const fetchBooks = createAsyncThunk(FETCH_BOOKS, async () => {
+  try {
+    const response = await axios.get(BOOKS_URL);
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    return err.message;
+  }
 });
 
-export const removeBook = (id) => ({
-  type: REMOVE_BOOK,
-  payload: {
-    id,
-  },
+export const addBook = createAsyncThunk(ADD_BOOK, async (book) => {
+  try {
+    await axios.post(BOOKS_URL, {
+      body: JSON.stringify(book),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  } catch (err) {
+    return Promise.reject(err);
+  }
+})
+
+export const removeBook = createAsyncThunk(REMOVE_BOOK, async (id) => {
+  await axios.delete(`${BOOKS_URL}/${id}`)
 });
