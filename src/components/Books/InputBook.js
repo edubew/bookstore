@@ -30,7 +30,7 @@ const InputBook = () => {
           author,
           item_id: uuidv4(),
           category,
-        })
+        }),
       );
     }
     state.title = '';

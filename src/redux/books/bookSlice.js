@@ -1,5 +1,4 @@
-import axios from "axios";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const BOOKS_URL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/fTVe6hSKCBLfTOyQqdDN/books';
 
@@ -13,7 +12,7 @@ const initialState = [];
 export default function booksReducer(state = initialState, action) {
   switch (action.type) {
     case `${ADD_BOOK}/fulfilled`:
-      return action.payload;
+      return state.concat(action.meta.arg);
 
     case `${FETCH_BOOKS}/fulfilled`:
       return Object.keys(action.payload).map((key) => {
@@ -27,35 +26,34 @@ export default function booksReducer(state = initialState, action) {
       });
 
     case `${REMOVE_BOOK}/fulfilled`:
-      return state.filter((book) => book.id !== action.payload);
+      return state.filter((book) => book.item_id !== action.payload.id);
     default:
       return state;
   }
 }
 
 export const fetchBooks = createAsyncThunk(FETCH_BOOKS, async () => {
-  try {
-    const response = await axios.get(BOOKS_URL);
-    const data = await response.json();
-    return data;
-  } catch (err) {
-    return err.message;
-  }
+  const response = await fetch(BOOKS_URL);
+  const data = await response.json();
+  return data;
 });
 
 export const addBook = createAsyncThunk(ADD_BOOK, async (book) => {
-  try {
-    await axios.post(BOOKS_URL, {
-      body: JSON.stringify(book),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-  } catch (err) {
-    return Promise.reject(err);
-  }
-})
+  await fetch(BOOKS_URL, {
+    method: 'POST',
+    body: JSON.stringify(book),
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
+});
 
 export const removeBook = createAsyncThunk(REMOVE_BOOK, async (id) => {
-  await axios.delete(`${BOOKS_URL}/${id}`)
+  await fetch(`${BOOKS_URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
+  return { id };
 });
