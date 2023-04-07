@@ -5,13 +5,13 @@
 .book__container {
   display: grid;
   grid-template-columns: 50% 25% 15%;
-  background: #fffcfc;
+  background: #fff;
   list-style: none;
   margin-bottom: 1.2rem;
   margin-left: 5%;
   margin-right: 5%;
   padding: 1rem;
-  box-shadow: 20px 20px 30px 20px #e6e1e1;
+  /* box-shadow: 20px 20px 30px 20px #e6e1e1; */
 }
 
 .book__content > small {
